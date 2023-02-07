@@ -29,8 +29,8 @@ app.set('views', path.join(__dirname, 'views'));
 
 // 1) GLOBAL MIDDLEWARES
 // Implement CORS
-app.options('*', cors());
 app.use(cors());
+app.options('*', cors());
 // Access-Control-Allow-Origin *
 // api.natours.com
 // natour.com
@@ -50,19 +50,22 @@ const scriptSrcUrls = [
   'https://unpkg.com/',
   'https://tile.openstreetmap.org',
   'https://cdnjs.cloudflare.com/ajax/libs/axios/1.3.2/axios.min.js',
-  'https://js.stripe.com/v3/'
+  'https://js.stripe.com/v3/',
+  'https://my-natours.onrender.com/'
 ];
 const styleSrcUrls = [
   'https://unpkg.com/',
   'https://tile.openstreetmap.org',
   'https://fonts.googleapis.com/',
-  'https://js.stripe.com/'
+  'https://js.stripe.com/',
+  'https://my-natours.onrender.com/'
 ];
 const connectSrcUrls = [
   'https://unpkg.com',
   'https://tile.openstreetmap.org',
   'ws://127.0.0.1:*/',
-  'https://js.stripe.com/'
+  'https://js.stripe.com/',
+  'https://my-natours.onrender.com/'
 ];
 const fontSrcUrls = ['fonts.googleapis.com', 'fonts.gstatic.com'];
 
@@ -83,7 +86,12 @@ app.use(
       styleSrc: ["'self'", 'https:', "'unsafe-inline'", ...styleSrcUrls],
       workerSrc: ["'self'", 'blob:', 'data:'],
       objectSrc: ["'none'"],
-      childSrc: ["'self'", 'blob:', 'https://js.stripe.com/'],
+      childSrc: [
+        "'self'",
+        'blob:',
+        'https://js.stripe.com/',
+        'https://my-natours.onrender.com/'
+      ],
       imgSrc: ["'self'", 'blob:', 'data:', 'https:'],
       fontSrc: ["'self'", ...fontSrcUrls],
       formAction: ["'self'"],
