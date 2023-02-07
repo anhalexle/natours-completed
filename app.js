@@ -17,6 +17,7 @@ const userRouter = require('./routers/userRoutes');
 const reviewRouter = require('./routers/reviewRoutes');
 const viewRouter = require('./routers/viewRoutes');
 const bookingRouter = require('./routers/bookingRoutes');
+const bookingController = require('./controllers/bookingController');
 
 // Start express app
 const app = express();
@@ -105,6 +106,13 @@ const limiter = rateLimit({
 });
 
 app.use('/api', limiter);
+
+// stripe return as a stream not in json, req.body not in json
+app.post(
+  '/webhook-checkout',
+  express.raw({ type: 'application/json' }),
+  bookingController.webhookCheckout
+);
 
 // Body parser, reading data from body into req.body
 app.use(express.json({ limit: '10kb' }));
