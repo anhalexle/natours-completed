@@ -70,6 +70,7 @@ app.use(
     directives: {
       defaultSrc: [],
       connectSrc: [
+        "'self'",
         'https:',
         'http:',
         'blob:',
@@ -77,13 +78,13 @@ app.use(
         "'unsafe-inline'",
         ...connectSrcUrls
       ],
-      scriptSrc: [...scriptSrcUrls],
-      styleSrc: ['https:', "'unsafe-inline'", ...styleSrcUrls],
-      workerSrc: ['blob:', 'data:'],
+      scriptSrc: ["'self'", ...scriptSrcUrls],
+      styleSrc: ["'self'", 'https:', "'unsafe-inline'", ...styleSrcUrls],
+      workerSrc: ["'self'", 'blob:', 'data:'],
       objectSrc: ["'none'"],
-      childSrc: ['blob:', 'https://js.stripe.com/'],
-      imgSrc: ['blob:', 'data:', 'https:'],
-      fontSrc: [...fontSrcUrls],
+      childSrc: ["'self'", 'blob:', 'https://js.stripe.com/'],
+      imgSrc: ["'self'", 'blob:', 'data:', 'https:'],
+      fontSrc: ["'self'", ...fontSrcUrls],
       formAction: ["'self'"],
       upgradeInsecureRequests: []
     }
