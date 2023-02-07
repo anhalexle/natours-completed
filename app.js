@@ -29,6 +29,7 @@ app.set('views', path.join(__dirname, 'views'));
 
 // 1) GLOBAL MIDDLEWARES
 // Implement CORS
+app.options('*', cors());
 app.use(cors());
 // Access-Control-Allow-Origin *
 // api.natours.com
@@ -37,7 +38,6 @@ app.use(cors());
 //   origin: 'https://www.natours.com'
 // }))
 
-app.options('*', cors());
 // only put patch delete requests action here and none of other resources
 // app.options('/api/v1/tours/:id', cors());
 
