@@ -67,4 +67,4 @@ if (bookBtn)
     const { tourId } = e.target.dataset;
     bookTour(tourId);
   });
-if (alert) showAlert('success', alertMessage, 20);
+if (alertMessage) showAlert('success', alertMessage, 20);
